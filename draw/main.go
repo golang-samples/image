@@ -24,6 +24,11 @@ func main() {
 	// fill m in blue
 	draw.Draw(m, m.Bounds(), &image.Uniform{blue}, image.ZP, draw.Src)
 
+	// draw a line
+	for i := m.Bounds().Min.X; i < m.Bounds().Max.X; i++ {
+		m.Set(i, m.Bounds().Max.Y/2, white) // to change a single pixel
+	}
+
 	w, _ := os.Create("new.png")
 	defer w.Close()
 	png.Encode(w, m) //Encode writes the Image m to w in PNG format.
